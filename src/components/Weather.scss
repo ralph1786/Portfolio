@@ -1,0 +1,44 @@
+@import "../utils/_variables.scss";
+
+.weather-widget-content {
+  color: white;
+  display: grid;
+  font-family: $font-family-Roboto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  .loader {
+    place-self: center;
+    margin-top: 20%;
+    margin-left: 10%;
+  }
+
+  img {
+    justify-self: center;
+    position: absolute;
+    top: 5%;
+  }
+
+  p {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    justify-self: center;
+    font-size: 1.3rem;
+  }
+
+  span:first-of-type {
+    margin-bottom: -20%;
+    font-size: 2rem;
+
+    span {
+      font-size: 1rem;
+      margin-left: 3%;
+    }
+  }
+
+  span {
+    grid-column: 2/3;
+    align-self: center;
+    font-size: 1.2rem;
+  }
+}
