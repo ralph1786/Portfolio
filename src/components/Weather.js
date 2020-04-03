@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import axios from "axios";
+import "./Weather.scss";
 import { weatherApiKey } from "../constants";
-import { geolocated } from "react-geolocated";
+import { PacmanLoader } from "react-spinners";
 
 function Weather({ coords }) {
   const [temperature, setTemperature] = useState(null);
   const [feelsLike, setFeelsLike] = useState(null);
+  const [weatherIcon, setWeatherIcon] = useState("");
+  const [description, setDescription] = useState("");
+  const [minTemperature, setMinTemperature] = useState("");
+  const [maxTemperature, setMaxTemperature] = useState("");
   let latitude = coords && coords.latitude;
   let longitude = coords && coords.longitude;
+  let degreeIcon = String.fromCharCode(176);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -16,9 +22,13 @@ function Weather({ coords }) {
         let response = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherApiKey}`
         );
-        console.log(response);
-        setTemperature(Math.ceil(response.data.main.temp));
-        setFeelsLike(Math.ceil(response.data.main.feels_like));
+        const { main, weather } = response.data;
+        setTemperature(Math.ceil(main.temp));
+        setFeelsLike(Math.ceil(main.feels_like));
+        setWeatherIcon(weather[0].icon);
+        setDescription(weather[0].description);
+        setMinTemperature(Math.ceil(main.temp_min));
+        setMaxTemperature(Math.ceil(main.temp_max));
       } catch (error) {
         console.log("error", error);
       }
@@ -27,15 +37,34 @@ function Weather({ coords }) {
   }, [latitude, longitude]);
 
   let content =
-    temperature === null || feelsLike === null
-      ? "Loading..."
-      : `Temperature: ${temperature}, Feels Like: ${feelsLike}`;
-  return <div style={{ color: "white" }}>{content}</div>;
+    temperature === null || feelsLike === null ? (
+      <div className="loader">
+        <PacmanLoader color={"#ffffff"} />
+      </div>
+    ) : (
+      <Fragment>
+        <img
+          src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+          alt="icon displaying current weather conditions"
+        />
+        <p>{description}</p>
+        <span>
+          {temperature}
+          {degreeIcon}
+          <span className="weather-widget-content-minMaxTemp">
+            {maxTemperature}
+            {degreeIcon}/{minTemperature}
+            {degreeIcon}
+          </span>
+        </span>
+        <span>
+          Feels Like {feelsLike}
+          {degreeIcon}
+        </span>
+      </Fragment>
+    );
+
+  return <div className="weather-widget-content">{content}</div>;
 }
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
-  userDecisionTimeout: 5000
-})(Weather);
+export default Weather;
