@@ -1,4 +1,8 @@
+@import "../utils/_variables.scss";
+
 .welcome-message {
   font-size: 2rem;
   color: white;
+  margin-top: 4%;
+  font-family: $font-family-Roboto;
 }
