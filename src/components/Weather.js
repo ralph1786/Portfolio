@@ -11,8 +11,8 @@ function Weather({ coords }) {
   const [description, setDescription] = useState("");
   const [minTemperature, setMinTemperature] = useState("");
   const [maxTemperature, setMaxTemperature] = useState("");
-  let latitude = coords && coords.latitude;
-  let longitude = coords && coords.longitude;
+  let latitude = coords.latitude;
+  let longitude = coords.longitude;
   let degreeIcon = String.fromCharCode(176);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ function Weather({ coords }) {
     };
     fetchWeatherData();
   }, [latitude, longitude]);
-
   let content =
     temperature === null || feelsLike === null ? (
       <div className="loader">
