@@ -1,6 +1,13 @@
-export const PROJECTS = [
+import ProjectOne from "../assets/images/project1.png";
+import ProjectTwo from "../assets/images/project2.png";
+import ProjectThree from "../assets/images/project3.png";
+import ProjectFour from "../assets/images/project4.png";
+import ProjectFive from "../assets/images/project5.png";
+
+const PROJECTS = [
   {
     name: "DaycareManager",
+    image: ProjectOne,
     demo: "https://youtu.be/k-yE_-2nhCA",
     github: "https://github.com/ralph1786/clientMngrFrontEnd",
     description:
@@ -11,14 +18,15 @@ export const PROJECTS = [
       "Redux",
       "React Router",
       "Redux-Thunk",
-      "Axios"
+      "Axios",
     ],
     testingTech: ["Jest", "Enzyme", "Sinon"],
     backendTech: ["Ruby on Rails", "Bcrypt", "JWT", "Active Record"],
-    database: "PostgreSQL"
+    database: "PostgreSQL",
   },
   {
     name: "FanChat",
+    image: ProjectTwo,
     demo: "https://youtu.be/k5_HTJ_TILo",
     github: "https://github.com/ralph1786/FrontEndMod4Project/tree/rafael2",
     description:
@@ -31,23 +39,25 @@ export const PROJECTS = [
       "Axios",
       "React Spinner",
       "React-ActionCable",
-      "@emotion/core"
+      "@emotion/core",
     ],
     backendTech: ["Ruby on Rails", "Action Cable", "Active Record"],
-    database: "PostgreSQL"
+    database: "PostgreSQL",
   },
   {
     name: "CoolSpots",
+    image: ProjectThree,
     demo: "https://youtu.be/HiOLW9ly8rc",
     github: "https://github.com/ralph1786/coolSpotFrontEnd/tree/master",
     description:
       "Application where users can share exciting places they have visited around the world. They can add reviews to these places as well.",
     frontendTech: ["HTML5", "CSS3", "JavaScript", "Anime.js"],
     backendTech: ["Ruby on Rails", "Active Record"],
-    database: "PostgreSQL"
+    database: "PostgreSQL",
   },
   {
     name: "CryptoDash",
+    image: ProjectFour,
     demo: "https://youtu.be/SGnCzh3D3qY",
     github: "https://github.com/ralph1786/CryptoDash",
     description:
@@ -63,12 +73,13 @@ export const PROJECTS = [
       "Three.js",
       "GraphQL",
       "Apollo",
-      "Axios"
+      "Axios",
     ],
-    backendTech: ["Express", "GraphQL", "Axios", "Express-GraphQL"]
+    backendTech: ["Express", "GraphQL", "Axios", "Express-GraphQL"],
   },
   {
     name: "CryptoDashMobile",
+    image: ProjectFive,
     demo: "https://youtu.be/aEpPt7dqIUg",
     github: "https://github.com/ralph1786/cryptoDashMobile",
     description:
@@ -80,8 +91,10 @@ export const PROJECTS = [
       "Axios",
       "React-Native-SVG-Chart",
       "GraphQL",
-      "Apollo"
+      "Apollo",
     ],
-    backendTech: ["Express", "GraphQL", "Axios", "Express-GraphQL"]
-  }
+    backendTech: ["Express", "GraphQL", "Axios", "Express-GraphQL"],
+  },
 ];
+
+export default PROJECTS;
