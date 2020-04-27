@@ -1,0 +1,32 @@
+@import "../utils/variables";
+
+.navigation-container {
+  position: fixed;
+  width: 100%;
+  background-color: lighten($color: #141414, $amount: 10);
+  z-index: 100;
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    color: white;
+    margin-right: 7%;
+
+    li {
+      margin: 0 3%;
+      font-family: $font-family-Roboto;
+      font-size: 1.1rem;
+
+      &:hover {
+        cursor: pointer;
+        color: darken($color: rgb(6, 165, 228), $amount: 2);
+        transition: color 0.4s ease-in;
+      }
+    }
+
+    // .active-link {
+    //   color: rgb(6, 165, 228);
+    // }
+  }
+}
