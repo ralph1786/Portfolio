@@ -1,0 +1,22 @@
+.big-circle {
+  clip-path: circle(55.7% at 3% 4%);
+  background-color: rgba(236, 234, 234, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -10;
+  width: 100%;
+}
+
+.small-circle {
+  clip-path: circle(19.3% at 100% 58%);
+  background-color: rgba(236, 234, 234, 0.3);
+  //   background-color: black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  z-index: -10;
+  width: 100%;
+}
