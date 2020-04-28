@@ -6,6 +6,7 @@ import Projects from "./containers/Projects";
 import About from "./containers/About";
 import ModalContent from "./components/ModalContent";
 import Modal from "react-modal";
+import Navbar from "./components/Navbar";
 
 const customStyles = {
   content: {
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <Fragment>
+      <Navbar />
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -38,10 +40,14 @@ function App() {
       >
         <ModalContent project={chosenProject} closeModal={closeModal} />
       </Modal>
-      <Home />
-      <About />
-      <Projects openModal={openModal} selectedProject={selectedProject} />
-      <Contact />
+      <Home name="home" />
+      <About name="about" />
+      <Projects
+        name="projects"
+        openModal={openModal}
+        selectedProject={selectedProject}
+      />
+      <Contact name="contact" />
     </Fragment>
   );
 }
