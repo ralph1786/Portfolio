@@ -1,5 +1,64 @@
+@import "../utils/variables.scss";
+@import "../utils/animations";
+
+@mixin commonStyling {
+  height: 100%;
+  font-family: $font-family-Roboto;
+  font-size: 1.4rem;
+  text-align: center;
+  place-self: center;
+  margin-top: 25%;
+}
+
 .about {
   width: 100%;
-  height: 80vh;
-  background-color: lightblue;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+  // background-color: darken($color: #ffffff, $amount: 5);
+  overflow: hidden;
+
+  &-bio {
+    opacity: 0;
+    visibility: hidden;
+    grid-column: 1/2;
+  }
+
+  &-bio-animated {
+    line-height: 2rem;
+    width: 80%;
+    @include commonStyling();
+    animation: FadeInSectionLeft 2s ease-in;
+    grid-column: 1/2;
+  }
+
+  &-chart {
+    opacity: 0;
+    visibility: hidden;
+    grid-column: 2/3;
+
+    div {
+      margin-left: 16%;
+    }
+  }
+
+  &-chart-animated {
+    width: 100%;
+    @include commonStyling();
+    animation: FadeInSectionRight 2s ease-in;
+    grid-column: 2/3;
+    div {
+      margin-left: 16%;
+      margin-top: 3%;
+    }
+  }
 }
+// @media (max-width: 450px) {
+//   .about {
+//     &-bio-animated {
+//       font-size: 1rem;
+//       line-height: 1.1rem;
+//     }
+//   }
+// }
