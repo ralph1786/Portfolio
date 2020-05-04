@@ -29,6 +29,9 @@
   flex-wrap: wrap;
   background-color: white;
   border-radius: 25px;
+  -webkit-box-shadow: 10px 10px 26px 10px rgba(163, 160, 163, 1);
+  -moz-box-shadow: 10px 10px 26px 10px rgba(163, 160, 163, 1);
+  box-shadow: 10px 10px 26px 10px rgba(163, 160, 163, 1);
 
   &-image {
     width: 100%;
