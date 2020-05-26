@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Name from "../components/Name";
 import Typewriter from "typewriter-effect";
 import WelcomeMessage from "../components/WelcomeMessage";
 import Weather from "../components/Weather";
 import { backgroundImage } from "./helper";
+import { geolocated } from "react-geolocated";
 import "./Home.scss";
 
-function Home() {
-  const [locationPermission, setLocationPermission] = useState(null);
+function Home({ coords }) {
   let time = new Date().getHours();
   let imagePath = backgroundImage(time);
-
-  navigator.geolocation.getCurrentPosition(position => {
-    if (position) setLocationPermission(true);
-  });
 
   return (
     <div
@@ -37,13 +33,18 @@ function Home() {
         </div>
         <WelcomeMessage time={time} />
       </div>
-      {locationPermission ? (
+      {coords ? (
         <div className="weather-widget">
-          <Weather />
+          <Weather coords={coords} />
         </div>
       ) : null}
     </div>
   );
 }
 
-export default Home;
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: true
+  },
+  userDecisionTimeout: 5000
+})(Home);
